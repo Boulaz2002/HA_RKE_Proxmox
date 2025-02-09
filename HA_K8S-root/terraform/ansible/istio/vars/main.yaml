@@ -1,0 +1,10 @@
+istio_namespace: istio-system
+gateway_name: istio-ingress-gateway
+
+virtualservice_name: my-virtualservice
+service_name: my-app-service
+service_port: 80
+
+app_name: simple-app
+app_namespace: default
+app_domain: simple-app.local

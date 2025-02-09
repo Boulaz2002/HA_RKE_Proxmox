@@ -25,3 +25,5 @@ resource "proxmox_vm_qemu" "rke2_nodes" {
   # Use only cicustom for Cloud-Init configuration
   cicustom = "user=local:snippets/cloud-init-userdata.yaml,meta=local:snippets/cloud-init-meta.yaml,network=local:snippets/cloud-init-network.yaml"
 }
+
+

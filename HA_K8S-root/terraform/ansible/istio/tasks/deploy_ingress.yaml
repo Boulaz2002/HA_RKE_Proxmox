@@ -1,0 +1,11 @@
+- name: Deploy Istio Gateway
+  kubernetes.core.k8s:
+    state: present
+    namespace: istio-system
+    definition: "{{ lookup('template', '../templates/app-gateway.yaml.j2') }}"
+
+- name: Deploy Istio VirtualService
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ app_namespace }}"
+    definition: "{{ lookup('template', '../templates/app-virtualservice.yaml.j2') }}"

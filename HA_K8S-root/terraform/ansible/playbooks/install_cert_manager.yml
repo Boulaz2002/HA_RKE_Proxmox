@@ -1,0 +1,7 @@
+- name: Install cert-manager for Rancher
+  hosts: rke2-master-1
+  tasks:
+    - name: Apply cert-manager manifests
+      ansible.builtin.shell: |
+        kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
+        kubectl wait --for=condition=available --timeout=300s -n cert-manager deployment/cert-manager

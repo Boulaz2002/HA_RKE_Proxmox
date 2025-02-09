@@ -75,5 +75,8 @@ module "worker-1" {
   disk_size = "20G"
   ip_address = "192.168.0.121"
   cloud_init_file = ""
-  ssh_public_key = ""
+}
+
+output "vm_ips" {
+  value = module.proxmox-vm.*.ip_address
 }

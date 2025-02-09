@@ -1,0 +1,41 @@
+project-root/
+├── terraform/
+│   ├── main.tf  # Main Terraform configuration file
+│   ├── variables.tf  # Define variables for VMs
+│   ├── outputs.tf  # Output useful information
+│   ├── providers.tf  # Proxmox provider configuration
+│   ├── terraform.tfvars  # User-defined variable values
+│   ├── cloud-init/  # Cloud-init configuration files
+│   ├── modules/
+│   │   ├── proxmox-vm/
+│   │   │   ├── main.tf
+│   │   │   ├── variables.tf
+│   │   │   ├── outputs.tf
+│   │   │   ├── README.md
+│   └── README.md  # Documentation for Terraform setup
+├── ansible/
+│   ├── playbooks/
+│   │   ├── install-rke2.yml  # Install RKE2 on nodes
+│   │   ├── configure-haproxy.yml  # Setup HAProxy
+│   │   ├── join-nodes.yml  # Join worker nodes to cluster
+│   ├── inventory.ini  # Inventory file for Ansible
+│   ├── roles/
+│   ├── README.md  # Documentation for Ansible setup
+├── kubernetes/
+│   ├── manifests/
+│   │   ├── rke2-config.yml  # RKE2 cluster configuration
+│   │   ├── rancher-deployment.yml  # Rancher installation
+│   │   ├── prometheus-grafana.yml  # Monitoring stack
+│   │   ├── istio-config.yml  # Istio Service Mesh
+│   ├── helm-charts/  # Custom Helm charts
+│   ├── README.md  # Documentation for Kubernetes setup
+├── scripts/
+│   ├── setup-env.sh  # Environment setup script
+│   ├── cleanup.sh  # Cleanup script
+│   ├── README.md  # Documentation for scripts
+├── docs/
+│   ├── architecture.md  # Architecture overview
+│   ├── setup-guide.md  # Step-by-step setup guide
+│   ├── troubleshooting.md  # Common issues & fixes
+│   ├── README.md  # Documentation index
+└── README.md  # Project Overview & Instructions

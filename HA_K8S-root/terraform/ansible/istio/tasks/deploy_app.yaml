@@ -1,0 +1,11 @@
+- name: Deploy App Deployment
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ app_namespace }}"
+    definition: "{{ lookup('template', '../templates/app-deployment.yaml.j2') }}"
+
+- name: Deploy App Service
+  kubernetes.core.k8s:
+    state: present
+    namespace: "{{ app_namespace }}"
+    definition: "{{ lookup('template', '../templates/app-service.yaml.j2') }}"
