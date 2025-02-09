@@ -1,0 +1,5 @@
+- name: Deploy Simple App
+  hosts: localhost
+  gather_facts: true
+  tasks:
+    - import_tasks: "../roles/app/tasks/deploy_app.yaml"

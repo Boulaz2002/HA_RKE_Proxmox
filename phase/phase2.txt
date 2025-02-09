@@ -1,0 +1,19 @@
+terraform/
+    ├── module/
+    │   ├── proxmox-vm/            # (Already completed in Phase 1)
+    │   ├── rke2-deployment/       # (New - Automates RKE2 installation)
+    │   ├── jenkins/               # (Later phase - Helm deployment)
+    │
+    ├── main.tf                    # Entry point for Terraform
+    ├── variables.tf                # Terraform variables
+    ├── outputs.tf                  # Terraform outputs
+    ├── terraform.tfvars            # User-defined values
+    └── ansible/
+        ├── playbooks/
+        │   ├── install_rke2.yaml   # Ansible playbook for RKE2 setup
+        │   ├── join_workers.yaml   # Worker node join process
+        │   ├── configure_haproxy.yaml  # HAProxy Load Balancer setup
+        │
+        ├── inventory.ini           # Inventory of nodes
+        ├── group_vars/             # Variables for Ansible
+        ├── roles/                  # Ansible roles for modular automation

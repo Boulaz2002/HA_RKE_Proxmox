@@ -1,0 +1,4 @@
+- name: Install cert-manager
+  ansible.builtin.shell: |
+    kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
+    kubectl wait --for=condition=available --timeout=300s -n cert-manager deployment/cert-manager

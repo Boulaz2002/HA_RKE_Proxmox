@@ -1,0 +1,27 @@
+# #cloud-config
+# hostname: ${hostname}
+# manage_etc_hosts: true
+# users:
+#   - name: ubuntu
+#     sudo: ALL=(ALL) NOPASSWD:ALL
+#     groups: sudo
+#     shell: /bin/bash
+#     ssh_authorized_keys:
+#       - YOUR_SSH_PUBLIC_KEY
+# runcmd:
+#   - apt update && apt upgrade -y
+#   - apt install -y curl jq bash-completion
+#   - echo "Cloud-init setup completed for worker node"
+
+
+version: 2
+ethernets:
+  ens18:
+    dhcp4: false
+    addresses:
+      - ${var.ip_address}/24
+    gateway4: ${var.gateway}
+    nameservers:
+      addresses:
+        - 8.8.8.8
+        - 1.1.1.1

@@ -1,0 +1,30 @@
+# #cloud-config
+# hostname: haproxy
+# manage_etc_hosts: true
+# users:
+#   - name: ubuntu
+#     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+#     groups: sudo
+#     shell: /bin/bash
+#     ssh_authorized_keys:
+#       - ssh-rsa AAAAB3...your-public-key... user@hostname
+
+# package_update: true
+# package_upgrade: true
+# packages:
+#   - curl
+#   - vim
+#   - wget
+#   - net-tools
+#   - ca-certificates
+#   - cloud-init
+
+# runcmd:
+#   - apt update && apt upgrade -y
+#   - apt install -y haproxy
+#   - systemctl enable haproxy
+#   - echo "HAProxy installed and ready"
+#   - echo "Cloud-Init setup complete!" > /etc/motd
+
+instance-id: rke2-instance
+local-hostname: ${var.name}

@@ -1,0 +1,36 @@
+- name: Install and configure HAProxy
+  hosts: loadbalancer
+  become: true
+  tasks:
+    - name: Install HAProxy
+      apt:
+        name: haproxy
+        state: present
+        update_cache: yes
+
+    - name: Configure HAProxy for RKE2 API
+      copy:
+        dest: /etc/haproxy/haproxy.cfg
+        content: |
+          defaults
+            log global
+            mode tcp
+            option tcplog
+            timeout connect 5000ms
+            timeout client 50000ms
+            timeout server 50000ms
+
+          frontend rke2-api
+            bind *:6443
+            default_backend rke2-masters
+
+          backend rke2-masters
+            balance roundrobin
+            server master-1 192.168.0.101:6443 check
+            server master-2 192.168.0.102:6443 check
+            server master-3 192.168.0.103:6443 check
+
+    - name: Restart HAProxy
+      systemd:
+        name: haproxy
+        state: restarted

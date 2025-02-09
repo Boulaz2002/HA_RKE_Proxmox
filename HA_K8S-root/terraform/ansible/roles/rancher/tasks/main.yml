@@ -1,0 +1,17 @@
+- name: Add Rancher Helm repository
+  ansible.builtin.shell: |
+    helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+    helm repo update
+
+- name: Create Rancher namespace
+  ansible.builtin.shell: kubectl create namespace cattle-system
+
+- name: Install Rancher using Helm
+  ansible.builtin.shell: |
+    helm install rancher rancher-stable/rancher \
+      --namespace cattle-system \
+      --set hostname=rancher.example.com \
+      --set replicas=3
+
+- name: Verify Rancher installation
+  ansible.builtin.shell: kubectl get pods -n cattle-system

@@ -1,0 +1,5 @@
+- name: Deploy Istio Ingress for App
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - import_tasks: "../roles/app/tasks/deploy_ingress.yaml"

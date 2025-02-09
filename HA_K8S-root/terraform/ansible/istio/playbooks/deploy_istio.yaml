@@ -1,0 +1,5 @@
+- name: Deploy Istio Service Mesh
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - import_tasks: "../roles/istio/tasks/install_istio.yaml"
